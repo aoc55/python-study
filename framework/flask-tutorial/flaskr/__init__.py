@@ -42,5 +42,10 @@ def create_app(test_config=None):       # application Factory Function
     from . import auth
     app.register_blueprint(auth.bp)
 
+    # Blog BluePrint 등록
+    from . import blog
+    app.register_blueprint(blog.blog_bp)
+    app.add_url_rule('/', endpoint='index')
+
     return app
 
