@@ -1,11 +1,11 @@
-# [ Function is Object ]
+# [ Function is Object !! ]
 def my_func_1():
     print("hello")
 
 
 print(id(my_func_1))    # 함수에 할당된 메모리 주소 조회
 
-# [ 다른 함수에 Assign 될 수 있음 ]
+# [ Function 다른 함수에 Assign 될 수 있음 ]
 a = my_func_1
 a()     # 호출
 
