@@ -29,7 +29,9 @@ def create_app():
     from . import models
 
     # BluePrint 등록
-    from .views import main_views
+    from .views import main_views, question_views, answer_views
     app.register_blueprint(main_views.bp)
+    app.register_blueprint(question_views.bp)
+    app.register_blueprint(answer_views.bp)
 
     return app
