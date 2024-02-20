@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef262a1f-4435-46a1-ba06-2228fa6ee185" name="Changes" comment="0207">
-      <change afterPath="$PROJECT_DIR$/flaskr/blog.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskr/templates/blog/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskr/templates/blog/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskr/templates/blog/update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+    <list default="true" id="ef262a1f-4435-46a1-ba06-2228fa6ee185" name="Changes" comment="0213">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lecture/udemy_python_deep_dive/integer.test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../lecture/udemy_python_deep_dive/integer.test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +33,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -189,6 +185,8 @@
       <workItem from="1707365891955" duration="1408000" />
       <workItem from="1707784873248" duration="4000" />
       <workItem from="1707809327370" duration="3334000" />
+      <workItem from="1707816402996" duration="34000" />
+      <workItem from="1707874131441" duration="1696000" />
     </task>
     <task id="LOCAL-00001" summary="0207">
       <option name="closed" value="true" />
@@ -198,15 +196,43 @@
       <option name="project" value="LOCAL" />
       <updated>1707293597261</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="0213">
+      <option name="closed" value="true" />
+      <created>1707816422773</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707816422773</updated>
+    </task>
+    <task id="LOCAL-00003" summary="0213">
+      <option name="closed" value="true" />
+      <created>1707816429787</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707816429787</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="0207" />
-    <option name="LAST_COMMIT_MESSAGE" value="0207" />
+    <MESSAGE value="0213" />
+    <option name="LAST_COMMIT_MESSAGE" value="0213" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/flask_tutorial$Flask__flaskr___init___py_create_app_.coverage" NAME="Flask (flaskr/__init__.py:create_app) Coverage Results" MODIFIED="1707287704795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

@@ -1,11 +1,22 @@
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import MetaData
 
 import config
 
 # DB 설정
-db = SQLAlchemy()       # 다른 모듈에서 사용 가능하게 전역변수
+
+naming_convention = {
+    "ix": 'ix_%(column_0_label)s',
+    "uq": "uq_%(table_name)s_%(column_0_name)s",
+    "ck": "ck_%(table_name)s_%(column_0_name)s",
+    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+    "pk": "pk_%(table_name)s"
+}
+
+
+db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))       # 다른 모듈에서 사용 가능하게 전역변수
 migrate = Migrate()     # 다른 모듈에서 사용 가능하게 전역변수
 
 # Application Factory => 'create_app()'
@@ -23,15 +34,23 @@ def create_app():
     # - (1) 전역변수 설정
     # - (2) 팩토리 같은 내부 메서드에서 초기화
     db.init_app(app)            # 전역변수 초기화
-    migrate.init_app(app, db)   # 전역변수 초기화
+    if app.config['SQLALCHEMY_DATABASE_URI'].startswith("sqlite"):
+        migrate.init_app(app, db, render_as_batch=True)
+    else:
+        migrate.init_app(app, db)
 
     # model 설정
     from . import models
 
     # BluePrint 등록
-    from .views import main_views, question_views, answer_views
+    from .views import main_views, question_views, answer_views, auth_views
     app.register_blueprint(main_views.bp)
     app.register_blueprint(question_views.bp)
     app.register_blueprint(answer_views.bp)
+    app.register_blueprint(auth_views.bp)
+
+    # Filter 설정
+    from .filter import format_datetime
+    app.jinja_env.filters['datetime'] = format_datetime
 
     return app
