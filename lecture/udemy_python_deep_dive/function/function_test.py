@@ -36,6 +36,22 @@ except TypeError as e:
     print("Type Error => ", e)
 
 
-# [ Lambda 정의 및 호출 ]
-my_lambda_func3 = lambda x: print("This is Lambda -> ", x)
-my_lambda_func3(100)
+# [ docString ]
+def my_func5():
+    """
+        THIS IS DOCSTRING
+    """
+    pass
+
+help(my_func5)
+print(my_func5.__doc__)
+
+
+# [ Function Annotation ]
+def my_func6(x: "this is x Parameter",
+             y: "this is y Parameter"):
+    pass
+
+
+help(my_func6)
+print(my_func6.__annotations__)
