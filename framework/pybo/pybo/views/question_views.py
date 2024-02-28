@@ -90,3 +90,18 @@ def delete(question_id):
     return redirect(url_for('question._list'))
 
 
+# 추천기능
+@bp.route('/vote/<int:question_id>/')
+@login_required
+def vote(question_id):
+    _question = Question.query.get_or_404(question_id)
+
+    if g.user == _question.user:
+        flash('본인이 작성한 글 추천할 수 X')
+
+    else:
+        _question.voter.append(g.user)      # 'append'
+        db.session.commit()
+
+    return redirect(url_for('question.detail', question_id=question_id))
+

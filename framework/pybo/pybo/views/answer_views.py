@@ -64,3 +64,16 @@ def delete(answer_id):
         db.session.commit()
     return redirect(url_for('question.detail', question_id=question_id))
 
+
+@bp.route('/vote/<int:answer_id>')
+@login_required
+def vote(answer_id):
+    _answer = Answer.query.get_or_404(answer_id)
+
+    if g.user == _answer.user:
+        flash('본인이 작성한 답변 추천 X')
+    else:
+        _answer.vote.append(g.user)     # 'append'
+        db.session.commit()
+
+    return redirect(url_for('question.detail', question_id=_answer.question.id))
