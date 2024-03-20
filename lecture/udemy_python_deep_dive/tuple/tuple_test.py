@@ -19,7 +19,7 @@ year, month, *_, city = sample # * (Unpacking Operator) + dummy Variable (__ 사
 print(f'year={year}, month={month}, city={city}')
 
 
-# [ Tuple -> Immutalbe ]
+# [ Tuple -> Immutable ]
 a = (1, 2, 3)
 a_id_1 = id(a)
 
