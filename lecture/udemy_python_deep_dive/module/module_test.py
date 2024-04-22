@@ -58,3 +58,4 @@ import fractions
 
 print(isinstance(math, types.ModuleType))       # True
 print(isinstance(fractions, types.ModuleType))  # True
+
