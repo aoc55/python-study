@@ -1,0 +1,120 @@
+# [실습1]
+1. package, module 각각 import
+2. import 이후 __path__, __file__, __package__ 필드 inspect
+3. type(패키지) -> <class 'module'>
+
+# [실습2]
+1. 패키지의 __init__.py 에 print 구문 추가
+2. 패키지 import 이후 print 구문 출력 확인 (__init__ 수행여부)
+
+# [실습3]
+1. nested 구조의 package import
+2. import 이후 각각 sys.modules 에 존재하는지 확인
+3. import 이후 각각 globals() namespace 에 존재하는지 확인 (최상위만)
+
+>>> import pack1.pack1_1
+>>> import sys
+
+>>> 'pack1' in sys.modules
+True
+
+>>> 'pack1.pack1_1' in sys.modules
+True
+
+>>> 'pack1_1' in sys.modules
+False
+
+>>> 'pack1' in globals()
+True
+
+>>> 'pack1.pack1_1' in globals()
+False
+
+
+# [실습4]
+1. from .. import .. 사용해서 import
+2. ID 값 동일한지 확인
+
+>>> id(pack1_1)
+4340185424
+
+>>> id(sys.modules['pack1.pack1_1'])
+4340185424
+
+# [실습5]
+1. 패키지 내 모듈 import
+
+>>> import pack1.pack1_1.module1_1a
+Execute Pack1...
+Execute Pack1_1...
+module 1_1 a ....
+
+>>> pack1.pack1_1.module1_1a.value
+'module 1_1 a'
+
+>>> import sys
+>>> 'pack1.pack1_1.module1_1a' in sys.modules
+True
+
+# 역시 globals 에는 없음
+>>> 'pack1.pack1_1.module1_1a' in globals()
+False
+
+# [실습6]
+1. 패키지 import 시 하위 모듈 자동 import ?
+2. 결론은 NO
+
+# pack1_1 까지만 로딩
+>>> import pack1.pack1_1
+Execute Pack1...
+Execute Pack1_1...
+
+>>> 'pack1.pack1_1' in sys.modules
+True
+
+>>> pack1.pack1_1.value
+'pack 1_1'
+
+# 하위 모듈 접근?
+>>> 'pack1.pack1_1.module1_1a' in sys.modules
+False
+
+>>> pack1.pack1_1.module1_1a.__file__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: module 'pack1.pack1_1' has no attribute 'module1_1a'
+
+>>> pack1.pack1_1.module1_1a.value
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: module 'pack1.pack1_1' has no attribute 'module1_1a'
+
+# [실습7]
+1. 패키지 import 시 하위 모듈 자동 import 하도록 __init__.py 구성
+
+# pack1_1.__init__.py 에 추가
+---
+import pack1.pack1_1.module1_1a
+import pack1.pack1_1.module1_1b
+# (단 절대경로로 해야함)
+---
+
+# import pack1.pack1_1 이후 하위 모듈 조회
+>> import pack1.pack1_1
+>>> pack1.pack1_1.module1_1a   # 정상
+
+# [실습8]
+1. 동일한 방식으로 상위에 한번더
+
+# pack1.__init__py 에도 아래 추가
+---
+import pack1.pack1_1
+---
+
+# 최상위 import 시 연쇄적으로!
+>>> import pack1
+
+Execute Pack1...
+Execute Pack1_1...
+module 1_1 a ....
+module 1_1 b ....
