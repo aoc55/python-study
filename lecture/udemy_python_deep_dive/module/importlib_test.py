@@ -16,3 +16,6 @@ print('my_math' in globals())   # True
 # - 활용하기
 print(my_math.sqrt(49))
 
+
+# [ importlib 이용한 모듈 리로딩 테스트 ]
+
