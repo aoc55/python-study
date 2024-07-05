@@ -182,8 +182,56 @@ print(PersonFinal.name)
 # - only setter 만하고 싶을때
 class PersonFinalV2:
 
-    prop = property(doc='write-only prorperty')
+    my_property = property(doc='write-only prorperty')
 
-    @prop.setter
-    def prop(self, value):
+    @my_property.setter
+    def my_property(self, value):
         print('setter called')
+
+
+print("------------------------------")
+
+
+# [ Properties 제거하기 ]
+# - Runtime 에 Properties 제거하기
+class Circle:
+    def __init__(self, color):
+        self._color = color
+        self.temp1 = 'temp1'
+
+    @property
+    def color(self):
+        return self._color
+
+    @color.setter
+    def color(self, color):
+        self._color = color
+
+    @color.deleter
+    def color(self):
+        del self._color
+
+
+circle = Circle('blue')
+
+# - 직접 제거하기
+print('Before Delete: ', circle.temp1)
+del circle.temp1
+#  delattr(circle, 'temp1')
+try:
+    print('After Delete', circle.temp1)
+except AttributeError as e:
+    print(e)
+
+# - @prop.deleter 사용해서 삭제
+print('Before Delete:', circle.color)
+del circle.color
+
+try:
+    print('After Delete:', circle.color)
+except AttributeError as e:
+    print(e)
+
+# - property 자체는 살아있기때문에 재설정가능
+circle.color = 'new color'
+print(circle.color)
